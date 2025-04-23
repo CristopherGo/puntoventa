@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Nueva Venta</title></head>
+<body>
+<h1>Registrar Venta</h1>
+
+<form th:action="@{/ventas/agregar}" method="post">
+    <label>Producto:</label>
+    <select name="productoId" required>
+        <option th:each="p : ${productos}" th:value="${p.id}" th:text="${p.nombre + ' - Stock: ' + p.stock}"></option>
+    </select>
+    <label>Cantidad:</label>
+    <input type="number" name="cantidad" min="1" required>
+    <button type="submit">Agregar</button>
+</form>
+
+<h2>Carrito</h2>
+<table border="1">
+    <tr>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Subtotal</th>
+        <th>Acción</th>
+    </tr>
+    <tr th:each="item, iterStat : ${carrito}">
+        <td th:text="${item.producto.nombre}"></td>
+        <td th:text="${item.cantidad}"></td>
+        <td th:text="${item.subtotal}"></td>
+        <td>
+            <a th:href="@{/ventas/carrito/eliminar/{i}(i=${iterStat.index})}">Eliminar</a>
+        </td>
+    </tr>
+</table>
+
+
+<form th:action="@{/ventas/guardar}" method="post">
+    <button type="submit" th:if="${carrito.size() > 0}">Registrar Venta</button>
+</form>
+
+<a th:href="@{/ventas}">Volver</a>
+</body>
+</html>

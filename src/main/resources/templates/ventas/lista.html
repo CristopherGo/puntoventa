@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Ventas</title></head>
+<body>
+<h1>Ventas</h1>
+<a th:href="@{/ventas/nueva}">+ Nueva Venta</a>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Fecha</th>
+        <th>Total</th>
+    </tr>
+    <tr th:each="venta : ${ventas}">
+        <td th:text="${venta.id}"></td>
+        <td th:text="${venta.fecha}"></td>
+        <td th:text="${venta.total}"></td>
+    </tr>
+</table>
+</body>
+</html>

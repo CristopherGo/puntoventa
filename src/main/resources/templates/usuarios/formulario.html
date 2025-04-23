@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Usuario</title>
+</head>
+<body>
+    <h2>Nuevo Usuario</h2>
+    <form th:action="@{/admin/usuarios/guardar}" method="post" th:object="${usuario}">
+        <label>Usuario:</label>
+        <input type="text" th:field="*{username}" required/><br>
+
+        <label>Contraseña:</label>
+        <input type="password" th:field="*{password}" required/><br>
+
+        <label>Rol:</label>
+        <select th:field="*{rol}">
+            <option value="ADMIN">ADMIN</option>
+            <option value="VENDEDOR">VENDEDOR</option>
+        </select><br>
+
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>
