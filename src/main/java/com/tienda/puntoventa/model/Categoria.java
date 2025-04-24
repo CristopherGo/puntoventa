@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Data //genera con lombok los getter and setter
+@Data //generate getters and setters with lombok
 @NoArgsConstructor
 @AllArgsConstructor
 public class Categoria {
